@@ -23,3 +23,6 @@
   margin-top: -83px;
   position: fixed;
 }
+.rating span {
+  color: #ffc000;
+}
