@@ -9,11 +9,11 @@ exports.sampleProduct = [
     category: 'Appliances',
     brand: 'Samsung',
     price: 8000,
-    stockCount: 51,
+    stockCount: 0,
     description:
       ' A time-saving appliance that efficiently cleans dishes, utensils, and cookware using hot water and detergent.',
     rating: 4,
-    numberOfReviews: 0,
+    numberOfReviews: 4,
   },
   {
     id: 2,

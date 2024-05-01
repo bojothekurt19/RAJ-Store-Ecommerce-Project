@@ -2,6 +2,7 @@ import { Button, Card } from 'react-bootstrap'
 import { Product } from '../types/Product'
 import { Link } from 'react-router-dom'
 import Rating from './Rating'
+import { CurrencyFormat } from '../types/CurrencyFormat'
 
 function ProductItem({ product }: { product: Product }) {
   return (
@@ -22,10 +23,10 @@ function ProductItem({ product }: { product: Product }) {
           rating={product.rating}
           numberOfReviews={product.numberOfReviews}
         />
-        <Card.Text>{product.price}</Card.Text>
+        <Card.Text>{CurrencyFormat(product.price)}</Card.Text>
         {product.stockCount === 0 ? (
           <Button variant="Light" disabled>
-            Out of stock.
+            Out of stock
           </Button>
         ) : (
           <Button> Add to cart</Button>
