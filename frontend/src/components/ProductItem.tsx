@@ -12,7 +12,7 @@ function ProductItem({ product }: { product: Product }) {
           src={product.image}
           alt={product.name}
           className="card-img-top"
-          style={{ height: '400px', objectFit: 'cover' }}
+          style={{ height: '320px', objectFit: 'cover' }}
         />
       </Link>
       <Card.Body>

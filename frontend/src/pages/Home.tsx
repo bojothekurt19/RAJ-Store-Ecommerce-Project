@@ -7,6 +7,7 @@ import axios from 'axios'
 import LoadingBox from '../components/LoadingBox'
 import MessageBox from '../components/MessageBox'
 import ProductItem from '../components/ProductItem'
+import { Helmet } from 'react-helmet-async'
 
 type State = {
   products: Product[]
@@ -62,6 +63,9 @@ export default function Home() {
     <MessageBox variant="danger">{error}</MessageBox>
   ) : (
     <Row>
+      <Helmet>
+        <title>RAJ STORE</title>
+      </Helmet>
       {products.map((product) => (
         <Col key={product.id} sm={6} m={4} lg={3}>
           <ProductItem product={product} />
