@@ -7,7 +7,7 @@ import { CurrencyFormat } from '../types/CurrencyFormat'
 function ProductItem({ product }: { product: Product }) {
   return (
     <Card style={{ height: '100%' }}>
-      <Link to={`/product/ ${product.id}`}>
+      <Link to={`/product/${product.url}`}>
         <img
           src={product.image}
           alt={product.name}
@@ -16,7 +16,7 @@ function ProductItem({ product }: { product: Product }) {
         />
       </Link>
       <Card.Body>
-        <Link to={`/product/ ${product.id}`}>
+        <Link to={`/product/${product.url}`}>
           <Card.Title>{product.name}</Card.Title>
         </Link>
         <Rating

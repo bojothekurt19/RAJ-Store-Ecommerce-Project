@@ -2,8 +2,8 @@ import { Product } from './types/Product'
 
 export const sampleProduct: Product[] = [
   {
-    id: 1,
     name: 'Dishwasher',
+    url: 'Dishwasher',
     image: '../productImages/appliances/dishwasher.jpg',
     category: 'Appliances',
     brand: 'Samsung',
@@ -15,8 +15,8 @@ export const sampleProduct: Product[] = [
     numberOfReviews: 4,
   },
   {
-    id: 2,
     name: 'Oven',
+    url: 'Oven',
     image: '../productImages/appliances/oven.jpeg',
     category: 'Appliances',
     brand: 'Samsung',
@@ -28,8 +28,8 @@ export const sampleProduct: Product[] = [
     numberOfReviews: 5,
   },
   {
-    id: 3,
     name: 'Refrigerator',
+    url: 'Refrigerator',
     image: '../productImages/appliances/ref.jpeg',
     category: 'Appliances',
     brand: 'Hanabishi',

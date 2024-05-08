@@ -2,7 +2,7 @@ import { Product } from './types/Product'
 
 export const sampleProduct: Product[] = [
   {
-    id: 1,
+    url: 'Dishwasher',
     name: 'Dishwasher',
     image: '../productImages/appliances/dishwasher.jpg',
     category: 'Appliances',
@@ -15,7 +15,7 @@ export const sampleProduct: Product[] = [
     numberOfReviews: 4,
   },
   {
-    id: 2,
+    url: 'Oven',
     name: 'Oven',
     image: '../productImages/appliances/oven.jpeg',
     category: 'Appliances',
@@ -28,7 +28,7 @@ export const sampleProduct: Product[] = [
     numberOfReviews: 5,
   },
   {
-    id: 3,
+    url: 'Refrigerator',
     name: 'Refrigerator',
     image: '../productImages/appliances/ref.jpeg',
     category: 'Appliances',

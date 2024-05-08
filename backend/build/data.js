@@ -3,8 +3,8 @@ Object.defineProperty(exports, '__esModule', { value: true })
 exports.sampleProduct = void 0
 exports.sampleProduct = [
   {
-    id: 1,
     name: 'Dishwasher',
+    url: 'Dishwasher',
     image: '../productImages/appliances/dishwasher.jpg',
     category: 'Appliances',
     brand: 'Samsung',
@@ -16,8 +16,8 @@ exports.sampleProduct = [
     numberOfReviews: 4,
   },
   {
-    id: 2,
     name: 'Oven',
+    url: 'Oven',
     image: '../productImages/appliances/oven.jpeg',
     category: 'Appliances',
     brand: 'Samsung',
@@ -29,8 +29,8 @@ exports.sampleProduct = [
     numberOfReviews: 5,
   },
   {
-    id: 3,
     name: 'Refrigerator',
+    url: 'Refrigerator',
     image: '../productImages/appliances/ref.jpeg',
     category: 'Appliances',
     brand: 'Hanabishi',
