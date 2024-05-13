@@ -1,18 +1,48 @@
+import { useContext, useEffect } from 'react'
 import './index.css'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar } from 'react-bootstrap'
 import { Outlet } from 'react-router-dom'
+import { Store } from './colorTheme'
 
 function App() {
+  const {
+    state: { mode },
+    dispatch,
+  } = useContext(Store)
+
+  useEffect(() => {
+    document.body.setAttribute('data-bs-theme', mode)
+  }, [mode])
+
+  const switchButton = () => {
+    dispatch({ type: 'SWITCH_MODE' })
+  }
   return (
     <div className="d-flex flex-column h-200">
       <header>
-        <Navbar className="Nav-Bar" expand="lg">
+        <Navbar
+          className="Nav-Bar"
+          variant="dark"
+          expand="lg"
+          style={{
+            backgroundColor: mode === 'light' ? '#bbe4e9' : '#596e79',
+          }}
+        >
           <Container>
             <Navbar.Brand>
-              <img src="../raj.png" alt="RAJ LOGO" className="Logo" />
+              <a href={'/'}>
+                <img
+                  src={mode === 'light' ? '../raj.png' : '../rajdarkmode.png'}
+                  alt="RAJ LOGO"
+                  className="Logo"
+                />
+              </a>
             </Navbar.Brand>
           </Container>
           <Nav>
+            <Button variant={mode} onClick={switchButton}>
+              <i className={mode === 'light' ? 'fa fa-sun' : 'fa fa-moon'}></i>
+            </Button>
             <a href="/cart" className="nav-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
