@@ -14,9 +14,12 @@ const initialState: AppState = {
 
 type Action = { type: 'SWITCH_MODE' }
 function reducer(state: AppState, action: Action): AppState {
+  let newMode
   switch (action.type) {
     case 'SWITCH_MODE':
-      return { mode: state.mode === 'dark' ? 'light' : 'dark' }
+      newMode = state.mode === 'dark' ? 'light' : 'dark'
+      localStorage.setItem('mode', newMode) // Save the new mode to local storage
+      return { ...state, mode: newMode }
     default:
       return state
   }
