@@ -1,12 +1,14 @@
 import { useContext, useEffect } from 'react'
 import './index.css'
-import { Button, Container, Nav, Navbar } from 'react-bootstrap'
-import { Outlet } from 'react-router-dom'
-import { Store } from './colorTheme'
+import { Badge, Button, Container, Nav, Navbar } from 'react-bootstrap'
+import { Link, Outlet } from 'react-router-dom'
+import { Store } from './storeData'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const {
-    state: { mode },
+    state: { mode, cart },
     dispatch,
   } = useContext(Store)
 
@@ -19,6 +21,7 @@ function App() {
   }
   return (
     <div className="d-flex flex-column h-200">
+      <ToastContainer position="bottom-center" limit={1} />
       <header>
         <Navbar
           className="Nav-Bar"
@@ -43,7 +46,7 @@ function App() {
             <Button variant={mode} onClick={switchButton}>
               <i className={mode === 'light' ? 'fa fa-sun' : 'fa fa-moon'}></i>
             </Button>
-            <a href="/cart" className="nav-link">
+            <Link to="/cart" className="nav-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="25"
@@ -54,8 +57,10 @@ function App() {
               >
                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
               </svg>
-              <span className="cart-Text">0</span>
-            </a>
+              <Badge>
+                {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+              </Badge>
+            </Link>
             <a href="/sign in" className="nav-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

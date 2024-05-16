@@ -3,17 +3,47 @@ import MessageBox from '../components/MessageBox'
 import { ApiError } from '../types/ApiError'
 import LoadingBox from '../components/LoadingBox'
 import { useGetProductUrlQuery } from '../hooks/productHook'
-import { getError } from '../utilities'
-import { useParams } from 'react-router-dom'
+import { getError, productToCart } from '../utilities'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Badge, Button, Card, Col, ListGroup, Row } from 'react-bootstrap'
 import Rating from '../components/Rating'
 import '../index.css'
+import { CurrencyFormat } from '../types/CurrencyFormat'
+import { useContext } from 'react'
+import { Store } from '../storeData'
+import { toast } from 'react-toastify'
 
+// interface ClearCartAction {
+//   type: 'Clear_Cart'
+// }
 function ProductPage() {
   const params = useParams()
   const { url } = params
 
   const { data: product, isLoading, error } = useGetProductUrlQuery(url!)
+
+  const { state, dispatch } = useContext(Store)
+  const { cart } = state
+
+  const navigate = useNavigate()
+
+  const AddToCart = () => {
+    const existingItem = cart.cartItems.find((x) => x._id === product!._id)
+    const quantity = existingItem ? existingItem.quantity + 1 : 1
+    if (product!.stockCount < quantity) {
+      toast.warn('Sorry. Product is not available.')
+      return
+    }
+    dispatch({
+      type: 'Add_To_Cart',
+      payload: { ...productToCart(product!), quantity },
+    })
+    toast.success('Product added to the cart.')
+    navigate('/cart')
+  }
+
+  // const clearCartAction: ClearCartAction = { type: 'Clear_Cart' }
+  // dispatch(clearCartAction)
 
   return isLoading ? (
     <LoadingBox />
@@ -43,7 +73,9 @@ function ProductPage() {
                 numberOfReviews={product.numberOfReviews}
               ></Rating>
             </ListGroup.Item>
-            <ListGroup.Item>Pirce : ${product.price}</ListGroup.Item>
+            <ListGroup.Item>
+              Price : {CurrencyFormat(product.price)}
+            </ListGroup.Item>
             <ListGroup.Item>
               Description:
               <p>{product.description}</p>
@@ -57,7 +89,7 @@ function ProductPage() {
                 <ListGroup.Item>
                   <Row>
                     <Col>Price:</Col>
-                    <Col>${product.price}</Col>
+                    <Col>{CurrencyFormat(product.price)}</Col>
                   </Row>
                 </ListGroup.Item>
                 <ListGroup.Item>
@@ -76,8 +108,16 @@ function ProductPage() {
                 {product.stockCount > 0 && (
                   <ListGroup.Item>
                     <div className="d-grid">
-                      <Button variant="primary">Add to Cart</Button>
+                      <Button onClick={AddToCart} variant="primary">
+                        Add to Cart
+                      </Button>
                     </div>
+                    {/* <Button
+                      onClick={() => dispatch(clearCartAction)}
+                      variant="primary"
+                    >
+                      Clear Cart
+                    </Button> */}
                   </ListGroup.Item>
                 )}
               </ListGroup>

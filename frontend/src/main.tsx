@@ -15,7 +15,7 @@ import ProductPage from './pages/ProductPage.tsx'
 import { HelmetProvider } from 'react-helmet-async'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
-import { ColorTheme } from './colorTheme.tsx'
+import { ColorTheme } from './storeData.tsx'
 
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
