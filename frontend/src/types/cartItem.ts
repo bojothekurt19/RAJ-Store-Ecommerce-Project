@@ -5,6 +5,7 @@ export type cartItem = {
   quantity: number
   stockCount: number
   _id: string
+  price: number
 }
 
 export type shippingAddress = {

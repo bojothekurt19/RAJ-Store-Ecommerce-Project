@@ -23,6 +23,7 @@
   margin-left: -50px;
   margin-top: -83px;
   position: fixed;
+  z-index: 1;
 }
 .rating span {
   color: #ffc000;
@@ -30,4 +31,15 @@
 
 img.large {
   max-width: 100%;
+}
+.img-fluid.rounded.img-thumbnail {
+  height: 100px;
+  width: 100px;
+}
+.clear-save {
+  margin-top: 20px;
+  margin-left: 627px;
+}
+.clear-cart {
+  margin-left: 10px;
 }

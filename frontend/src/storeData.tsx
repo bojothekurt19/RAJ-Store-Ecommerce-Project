@@ -70,12 +70,6 @@ function reducer(state: AppState, action: Action): AppState {
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }
     }
-
-    // case 'Clear_Cart': {
-    //   localStorage.removeItem('cartItems')
-    //   return { ...state, cart: { ...state.cart, cartItems: [] } }
-    // }
-
     default:
       return state
   }

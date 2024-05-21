@@ -13,9 +13,6 @@ import { useContext } from 'react'
 import { Store } from '../storeData'
 import { toast } from 'react-toastify'
 
-// interface ClearCartAction {
-//   type: 'Clear_Cart'
-// }
 function ProductPage() {
   const params = useParams()
   const { url } = params
@@ -41,9 +38,6 @@ function ProductPage() {
     toast.success('Product added to the cart.')
     navigate('/cart')
   }
-
-  // const clearCartAction: ClearCartAction = { type: 'Clear_Cart' }
-  // dispatch(clearCartAction)
 
   return isLoading ? (
     <LoadingBox />
@@ -112,12 +106,6 @@ function ProductPage() {
                         Add to Cart
                       </Button>
                     </div>
-                    {/* <Button
-                      onClick={() => dispatch(clearCartAction)}
-                      variant="primary"
-                    >
-                      Clear Cart
-                    </Button> */}
                   </ListGroup.Item>
                 )}
               </ListGroup>

@@ -1,5 +1,4 @@
 import { ApiError } from './types/ApiError'
-import { CurrencyFormat } from './types/CurrencyFormat'
 import { Product } from './types/Product'
 import { cartItem } from './types/cartItem'
 
@@ -26,7 +25,7 @@ export const productToCart = (product: Product): cartItem => {
     name: product.name,
     url: product.url,
     image: product.image,
-    price: CurrencyFormat(product.price),
+    price: product.price,
     stockCount: product.stockCount,
     quantity: 1,
   }
