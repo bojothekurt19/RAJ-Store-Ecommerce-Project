@@ -25,7 +25,12 @@ function ProductItem({ product }: { product: Product }) {
       type: 'Add_To_Cart',
       payload: { ...item, quantity },
     })
-    toast.success('Product added to the cart.')
+    toast.success('Product added to the cart.', {
+      autoClose: 200,
+      hideProgressBar: true, // Hide the progress bar
+      pauseOnHover: false, // Do not pause the toast when hovered
+      draggable: false, // Disable dragging
+    })
   }
 
   return (
