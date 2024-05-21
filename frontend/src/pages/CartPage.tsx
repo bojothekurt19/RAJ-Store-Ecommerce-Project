@@ -32,6 +32,13 @@ export default function CartPage() {
   const checkoutHandler = () => {
     navigate('signin?redirect=/shipping')
   }
+  const removeItemfromCartHandler = (item: cartItem) => {
+    dispatch({ type: 'Remove_Item_From_Cart', payload: item })
+  }
+  const removeAllCartItemsHandler = () => {
+    dispatch({ type: 'Clear_Cart' })
+  }
+
   const calculateSubtotal = () => {
     return {
       quantity: cartItems.reduce(
@@ -57,8 +64,7 @@ export default function CartPage() {
         <Col md={8}>
           {cartItems.length === 0 ? (
             <MessageBox>
-              Cart is empty.
-              <Link to="/">Home</Link>
+              Cart is empty. <Link to="/">Home</Link>
             </MessageBox>
           ) : (
             <ListGroup>
@@ -98,7 +104,10 @@ export default function CartPage() {
                     </Col>
                     <Col md={3}>{CurrencyFormat(item.price)}</Col>
                     <Col md={2}>
-                      <Button variant="light">
+                      <Button
+                        onClick={() => removeItemfromCartHandler(item)}
+                        variant="light"
+                      >
                         <i className="fas fa-trash"></i>
                       </Button>
                     </Col>
@@ -143,7 +152,11 @@ export default function CartPage() {
                 <Link to="/">
                   <Button variant="secondary">Save</Button>
                 </Link>
-                <Button variant="secondary" className="clear-cart">
+                <Button
+                  onClick={removeAllCartItemsHandler}
+                  variant="secondary"
+                  className="clear-cart"
+                >
                   Clear Cart
                 </Button>
               </ListGroup>

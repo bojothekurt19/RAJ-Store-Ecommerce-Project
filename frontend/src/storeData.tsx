@@ -33,6 +33,9 @@ type Action =
   | { type: 'SWITCH_MODE' }
   | { type: 'Add_To_Cart'; payload: cartItem }
   | { type: 'Clear_Cart' }
+  | { type: 'Remove_Item_From_Cart'; payload: cartItem }
+  | { type: 'Clear_Cart' }
+
 function reducer(state: AppState, action: Action): AppState {
   let newMode
   switch (action.type) {
@@ -41,21 +44,6 @@ function reducer(state: AppState, action: Action): AppState {
       localStorage.setItem('mode', newMode) // Save the new mode to local storage
       return { ...state, mode: newMode }
 
-    //   case 'Add_To_Cart':
-    //     const newItem = action.payload
-    //     const existingItem = state.cart.cartItems.find(
-    //       (item:cartItem) => item._id === newItem._id
-    //     )
-    //     const cartItems = existingItem
-    //     ? state.cart.cartItems.map((item: cartItem)=>
-    //     item._id === existingItem._id ? newItem : item )
-    //     : [...state.cart.cartItems, newItem]
-    //     localStorage.setItem('cartItems', JSON.stringify(cartItems))
-    //     return { ...state, cart: { ...state.cart, cartItems } }
-    //      default:
-    //     return state
-    //   }
-    // }
     case 'Add_To_Cart': {
       const newItem = action.payload
       const existingItem = state.cart.cartItems.find(
@@ -70,6 +58,21 @@ function reducer(state: AppState, action: Action): AppState {
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
       return { ...state, cart: { ...state.cart, cartItems } }
     }
+
+    case 'Remove_Item_From_Cart': {
+      const cartItems = state.cart.cartItems.filter(
+        (item: cartItem) => item._id !== action.payload._id
+      )
+      localStorage.setItem('cartItems', JSON.stringify(cartItems))
+      return { ...state, cart: { ...state.cart, cartItems } }
+    }
+
+    case 'Clear_Cart': {
+      const cartItems: never[] = []
+      localStorage.setItem('cartItems', JSON.stringify(cartItems))
+      return { ...state, cart: { ...state.cart, cartItems } }
+    }
+
     default:
       return state
   }
