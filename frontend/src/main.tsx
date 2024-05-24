@@ -17,6 +17,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { ColorTheme } from './storeData.tsx'
 import CartPage from './pages/CartPage.tsx'
+import SigninPage from './pages/SigninPage.tsx'
 
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
@@ -27,6 +28,8 @@ const router = createBrowserRouter(
       <Route index={true} element={<Home />} />
       <Route path="product/:url" element={<ProductPage />} />
       <Route path="cart" element={<CartPage />} />
+      <Route path="signin" element={<SigninPage />} />
+
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}
     </Route>

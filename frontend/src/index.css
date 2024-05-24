@@ -17,6 +17,15 @@
   height: 100px;
   background-color: #bbe4e9;
 }
+.nav-link {
+  margin-left: 15px;
+}
+.Cart-Count {
+  position: absolute;
+  margin-left: -3px;
+  margin-top: -3px;
+}
+
 .Logo {
   width: 200px; /* Adjust the width as needed */
   height: auto;
@@ -42,4 +51,18 @@ img.large {
 }
 .clear-cart {
   margin-left: 10px;
+}
+
+.mb-3 {
+  max-width: 450px;
+}
+.custom-border {
+  border: 0.3px solid gray !important;
+}
+.small-container {
+  border: 1px solid gray;
+  padding: 20px;
+  border-radius: 20px;
+  max-width: 450px !important;
+  width: 100%;
 }

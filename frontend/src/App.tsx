@@ -1,6 +1,13 @@
 import { useContext, useEffect } from 'react'
 import './index.css'
-import { Badge, Button, Container, Nav, Navbar } from 'react-bootstrap'
+import {
+  Badge,
+  Button,
+  Container,
+  Nav,
+  NavDropdown,
+  Navbar,
+} from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
 import { Store } from './storeData'
 import { ToastContainer } from 'react-toastify'
@@ -8,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const {
-    state: { mode, cart },
+    state: { mode, cart, userInfo },
     dispatch,
   } = useContext(Store)
 
@@ -18,6 +25,14 @@ function App() {
 
   const switchButton = () => {
     dispatch({ type: 'SWITCH_MODE' })
+  }
+  const signoutHandler = () => {
+    dispatch({ type: 'User_Signout' })
+    localStorage.removeItem('userInfo')
+    localStorage.removeItem('cartItems')
+    localStorage.removeItem('shippingAddress')
+    localStorage.removeItem('paymentMethod')
+    window.location.href = '/signin'
   }
   return (
     <div className="d-flex flex-column h-200">
@@ -57,11 +72,35 @@ function App() {
               >
                 <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
               </svg>
-              <Badge>
+              <Badge className="Cart-Count">
                 {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
               </Badge>
             </Link>
-            <a href="/sign in" className="nav-link">
+            {userInfo ? (
+              <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                <Link
+                  className="dropdown-item"
+                  to="#signout"
+                  onClick={signoutHandler}
+                >
+                  Sign Out
+                </Link>
+              </NavDropdown>
+            ) : (
+              <Link className="nav-link" to="/signin">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="black"
+                  className="bi bi-person"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                </svg>
+              </Link>
+            )}
+            {/* <a href="/signin" className="nav-link">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -72,7 +111,7 @@ function App() {
               >
                 <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
               </svg>
-            </a>
+            </a> */}
           </Nav>
         </Navbar>
       </header>

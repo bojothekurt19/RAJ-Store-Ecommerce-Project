@@ -30,8 +30,9 @@ export default function CartPage() {
     })
   }
   const checkoutHandler = () => {
-    navigate('signin?redirect=/shipping')
+    navigate('/signin?redirect=/shipping')
   }
+
   const removeItemfromCartHandler = (item: cartItem) => {
     dispatch({ type: 'Remove_Item_From_Cart', payload: item })
   }
