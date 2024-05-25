@@ -10,7 +10,7 @@ import {
 } from 'react-bootstrap'
 import { Link, Outlet } from 'react-router-dom'
 import { Store } from './storeData'
-import { ToastContainer } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
@@ -34,6 +34,39 @@ function App() {
     localStorage.removeItem('paymentMethod')
     window.location.href = '/signin'
   }
+  const automaticLogout = () => {
+    let timer: NodeJS.Timeout | null = null
+    const userIsActive = () => {
+      if (typeof window !== 'undefined' && localStorage) {
+        const isLoggedInFromStorage = localStorage.getItem('userInfo') !== null
+        if (isLoggedInFromStorage) {
+          clearTimeout(timer!)
+          timer = setTimeout(() => {
+            dispatch({ type: 'User_Signout' })
+            localStorage.removeItem('userInfo')
+            localStorage.removeItem('cartItems')
+            localStorage.removeItem('shippingAddress')
+            localStorage.removeItem('paymentMethod')
+            toast.warn('Due to inactivity, your account has been logged out.')
+            setTimeout(() => {
+              window.location.href = '/signin'
+            }, 5000)
+          }, 5 * 60 * 1000)
+        }
+      }
+    }
+    document.addEventListener('mousemove', userIsActive)
+    document.addEventListener('keypress', userIsActive)
+    document.addEventListener('scroll', userIsActive)
+  }
+  useEffect(() => {
+    const timer = automaticLogout()
+
+    return () => {
+      clearTimeout(timer!)
+    }
+  })
+
   return (
     <div className="d-flex flex-column h-200">
       <ToastContainer position="bottom-center" limit={1} />

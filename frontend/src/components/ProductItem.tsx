@@ -8,6 +8,7 @@ import { Store } from '../storeData'
 import { cartItem } from '../types/cartItem'
 import { productToCart } from '../utilities'
 import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function ProductItem({ product }: { product: Product }) {
   const { state, dispatch } = useContext(Store)
