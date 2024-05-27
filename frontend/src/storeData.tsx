@@ -45,6 +45,7 @@ type Action =
   | { type: 'User_Signin'; payload: UserInfo }
   | { type: 'User_Signout' }
   | { type: 'Save_Shipping_Address'; payload: shippingAddress }
+  | { type: 'Save_Payment_Method'; payload: string }
 
 function reducer(state: AppState, action: Action): AppState {
   let newMode
@@ -91,7 +92,7 @@ function reducer(state: AppState, action: Action): AppState {
             : 'light',
         cart: {
           cartItems: [],
-          paymentMethod: 'PayPal',
+          paymentMethod: 'Paypal',
           shippingAddress: {
             fullName: '',
             address: '',
@@ -115,6 +116,14 @@ function reducer(state: AppState, action: Action): AppState {
         cart: {
           ...state.cart,
           shippingAddress: action.payload,
+        },
+      }
+    case 'Save_Payment_Method':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          paymentMethod: action.payload,
         },
       }
 
