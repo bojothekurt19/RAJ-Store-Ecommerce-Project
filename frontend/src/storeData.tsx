@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cart, cartItem } from './types/cartItem'
+import { Cart, cartItem, shippingAddress } from './types/cartItem'
 import { UserInfo } from './types/UserInfo'
 
 type AppState = {
@@ -44,6 +44,7 @@ type Action =
   | { type: 'Clear_Cart' }
   | { type: 'User_Signin'; payload: UserInfo }
   | { type: 'User_Signout' }
+  | { type: 'Save_Shipping_Address'; payload: shippingAddress }
 
 function reducer(state: AppState, action: Action): AppState {
   let newMode
@@ -97,11 +98,23 @@ function reducer(state: AppState, action: Action): AppState {
             postalCode: '',
             city: '',
             country: '',
+            location: {
+              lat: 0,
+              lng: 0,
+            },
           },
           itemPrice: 0,
           shippingPrice: 0,
           taxPrice: 0,
           totalPrice: 0,
+        },
+      }
+    case 'Save_Shipping_Address':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: action.payload,
         },
       }
 

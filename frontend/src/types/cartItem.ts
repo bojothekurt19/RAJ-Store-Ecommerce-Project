@@ -14,6 +14,11 @@ export type shippingAddress = {
   postalCode: string
   country: string
   fullName: string
+  location: Location
+}
+type Location = {
+  lat: number
+  lng: number
 }
 
 export type Cart = {

@@ -32,7 +32,8 @@ export default function SigninPage() {
       })
       dispatch({ type: 'User_Signin', payload: data })
       localStorage.setItem('userInfo', JSON.stringify(data))
-      navigate(redirect)
+      // navigate(redirect)
+      window.location.reload()
     } catch (err) {
       toast.error(getError(err as ApiError))
     }

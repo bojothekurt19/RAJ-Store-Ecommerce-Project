@@ -33,6 +33,7 @@
   margin-top: -83px;
   position: fixed;
   z-index: 1;
+  clip-path: circle(30% at 50%);
 }
 .rating span {
   color: #ffc000;
@@ -65,4 +66,12 @@ img.large {
   border-radius: 20px;
   max-width: 450px !important;
   width: 100%;
+}
+.checkout-steps > div {
+  border-bottom: 0.2rem solid #a0a0a0;
+  color: #a0a0a0;
+}
+.checkout-steps > div.active {
+  border-bottom: 0.2rem solid #f08000;
+  color: #f08000;
 }
