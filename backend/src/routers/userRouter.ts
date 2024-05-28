@@ -42,3 +42,21 @@ userRouter.post(
     })
   })
 )
+// userRouter.post(
+// '/forgot-password',
+// asyncHandler(async (req: Request, res: Response) => {
+//   const { email } = req.body;
+
+//   // Find the user by email
+//   const user = await UserModel.findOne({ email });
+
+//   // If user exists, generate a reset token and send it to the user's email
+//   if (user) {
+//     const resetToken = generateResetToken(user);
+//     await sendResetEmail(user.email, resetToken);
+//     res.json({ message: 'Reset email sent' });
+//   } else {
+//     res.status(404).json({ message: 'User not found' });
+//   }
+// })
+// );

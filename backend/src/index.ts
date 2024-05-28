@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import { productRouter } from './routers/productRouter'
 import { seedRouter } from './routers/seedRouter'
 import { userRouter } from './routers/userRouter'
+import { orderRouter } from './routers/orderRouter'
 
 dotenv.config()
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/rajdb'
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: true })) //Middleware
 app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
 app.use('/api/seed', seedRouter)
+app.use('/api/orders', orderRouter)
 
 const PORT = 4000
 app.listen(PORT, () => {
