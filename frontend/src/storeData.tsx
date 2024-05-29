@@ -41,7 +41,7 @@ type Action =
   | { type: 'Add_To_Cart'; payload: cartItem }
   | { type: 'Clear_Cart' }
   | { type: 'Remove_Item_From_Cart'; payload: cartItem }
-  | { type: 'Clear_Cart' }
+  | { type: 'Cart_Clear' }
   | { type: 'User_Signin'; payload: UserInfo }
   | { type: 'User_Signout' }
   | { type: 'Save_Shipping_Address'; payload: shippingAddress }
@@ -125,6 +125,11 @@ function reducer(state: AppState, action: Action): AppState {
           ...state.cart,
           paymentMethod: action.payload,
         },
+      }
+    case 'Cart_Clear':
+      return {
+        ...state,
+        cart: { ...state.cart, cartItems: [] },
       }
 
     default:

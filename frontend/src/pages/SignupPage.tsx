@@ -60,7 +60,11 @@ export default function SignupPage() {
       <Form onSubmit={submitRegisterHandler}>
         <Form.Group className="mb-3" controlId="name">
           <Form.Label>Name</Form.Label>
-          <Form.Control onChange={(e) => setName(e.target.value)} required />
+          <Form.Control
+            onChange={(e) => setName(e.target.value)}
+            required
+            className="signup-border"
+          />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="email">
@@ -69,6 +73,7 @@ export default function SignupPage() {
             type="email"
             required
             onChange={(e) => setEmail(e.target.value)}
+            className="signup-border"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
@@ -77,6 +82,7 @@ export default function SignupPage() {
             type="password"
             required
             onChange={(e) => setPassword(e.target.value)}
+            className="signup-border"
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="confirm-password">
@@ -85,6 +91,7 @@ export default function SignupPage() {
             type="password"
             required
             onChange={(e) => setConfirmPassword(e.target.value)}
+            className="signup-border"
           />
         </Form.Group>
         <div className="mb-3">

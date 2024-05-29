@@ -7,6 +7,7 @@ import { Form } from 'react-bootstrap'
 import { CheckoutSteps } from '../components/CheckoutSteps'
 import { Helmet } from 'react-helmet-async'
 import { Button } from 'react-bootstrap'
+import '../index.css'
 
 export default function PaymentMethodPage() {
   const navigate = useNavigate()
@@ -34,7 +35,7 @@ export default function PaymentMethodPage() {
   return (
     <div>
       <CheckoutSteps step1 step2 step3></CheckoutSteps>
-      <div className="container small-container">
+      <div className="container small-container payment">
         <Helmet>
           <title>Payment Method</title>
         </Helmet>

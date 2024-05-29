@@ -21,6 +21,8 @@ import SigninPage from './pages/SigninPage.tsx'
 import SignupPage from './pages/SignupPage.tsx'
 import ShippingAddressPage from './pages/ShippingAdressPage.tsx'
 import PaymentMethodPage from './pages/PaymentMethodPage.tsx'
+import ProtectedRoute from './components/protectedRoute.tsx'
+import PlaceOrder from './pages/PlaceOrder.tsx'
 
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
@@ -33,8 +35,12 @@ const router = createBrowserRouter(
       <Route path="cart" element={<CartPage />} />
       <Route path="signin" element={<SigninPage />} />
       <Route path="signup" element={<SignupPage />} />
-      <Route path="shipping" element={<ShippingAddressPage />} />
-      <Route path="payment" element={<PaymentMethodPage />} />
+
+      <Route path="" element={<ProtectedRoute />}>
+        <Route path="shipping" element={<ShippingAddressPage />} />
+        <Route path="payment" element={<PaymentMethodPage />} />
+        <Route path="placeorder" element={<PlaceOrder />} />
+      </Route>
 
       {/* <Route path="dashboard" element={<Dashboard />} /> */}
       {/* ... etc. */}

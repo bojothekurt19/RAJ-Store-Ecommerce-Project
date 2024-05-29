@@ -70,7 +70,7 @@ export default function CartPage() {
           ) : (
             <ListGroup>
               {cartItems.map((item: cartItem) => (
-                <ListGroup.Item key={item._id}>
+                <ListGroup.Item key={item._id} className="cart-border">
                   <Row className="align-items-center">
                     <Col md={4}>
                       <Link to={`/product/${item.url}`}>
@@ -119,10 +119,10 @@ export default function CartPage() {
           )}
         </Col>
         <Col md={4}>
-          <Card>
+          <Card className="cart-border">
             <Card.Body>
               <ListGroup variant="flush">
-                <ListGroup.Item>
+                <ListGroup.Item className="cart-border">
                   <h3>
                     Subtotal ({summary.quantity} items):
                     {CurrencyFormat(summary.totalPrice)}
@@ -147,7 +147,7 @@ export default function CartPage() {
       </Row>
       <div className="clear-save">
         <Col md={4}>
-          <Card>
+          <Card className="cart-border">
             <Card.Body>
               <ListGroup horizontal>
                 <Link to="/">

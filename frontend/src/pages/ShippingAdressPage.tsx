@@ -1,16 +1,17 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Store } from '../storeData'
 import { Helmet } from 'react-helmet-async'
 import Form from 'react-bootstrap/Form'
 import { CheckoutSteps } from '../components/CheckoutSteps'
 import { Button } from 'react-bootstrap'
+import '../index.css'
 
 export default function ShippingAddressPage() {
   const navigate = useNavigate()
   const { state, dispatch } = useContext(Store)
   const {
-    userInfo,
+    // userInfo, // Optional
     cart: { shippingAddress },
   } = state
 
@@ -20,11 +21,11 @@ export default function ShippingAddressPage() {
   const [postalCode, setPostalCode] = useState(shippingAddress.postalCode || '')
   const [country, setCountry] = useState(shippingAddress.country || '')
 
-  useEffect(() => {
-    if (!userInfo) {
-      navigate('/signin?redirect=/shipping')
-    }
-  }, [userInfo, navigate])
+  // useEffect(() => {
+  //   if (!userInfo) {
+  //     navigate('/signin?redirect=/shipping')
+  //   }
+  // }, [userInfo, navigate]) // Optional
 
   const submitHandler = (e: React.SyntheticEvent) => {
     e.preventDefault()
@@ -57,7 +58,7 @@ export default function ShippingAddressPage() {
         <title>Shipping Address</title>
       </Helmet>
       <CheckoutSteps step1 step2></CheckoutSteps>
-      <div className="container small-container">
+      <div className="container small-container shipping">
         <h1 className="my-3">Shipping Address</h1>
         <Form onSubmit={submitHandler}>
           <Form.Group className="mb-3" controlId="fullName">
@@ -66,6 +67,7 @@ export default function ShippingAddressPage() {
               value={fullName}
               required
               onChange={(e) => setFullName(e.target.value)}
+              className="shipping-input"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="address">
@@ -74,6 +76,7 @@ export default function ShippingAddressPage() {
               value={address}
               required
               onChange={(e) => setAddress(e.target.value)}
+              className="shipping-input"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="city">
@@ -82,6 +85,7 @@ export default function ShippingAddressPage() {
               value={city}
               required
               onChange={(e) => setCity(e.target.value)}
+              className="shipping-input"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="postal-code">
@@ -90,6 +94,7 @@ export default function ShippingAddressPage() {
               value={postalCode}
               required
               onChange={(e) => setPostalCode(e.target.value)}
+              className="shipping-input"
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="country">
@@ -98,6 +103,7 @@ export default function ShippingAddressPage() {
               value={country}
               required
               onChange={(e) => setCountry(e.target.value)}
+              className="shipping-input"
             />
           </Form.Group>
           <div className="mb-3">
