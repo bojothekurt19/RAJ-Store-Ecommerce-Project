@@ -24,6 +24,7 @@ import PaymentMethodPage from './pages/PaymentMethodPage.tsx'
 import ProtectedRoute from './components/protectedRoute.tsx'
 import PlaceOrder from './pages/PlaceOrder.tsx'
 import OrderPage from './pages/OrderPage.tsx'
+import { PayPalScriptProvider } from '@paypal/react-paypal-js'
 
 // axios.defaults.baseURL =
 //   process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : '/'
@@ -54,12 +55,14 @@ const queryClient = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <ColorTheme>
-      <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={router} />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-      </HelmetProvider>
+      <PayPalScriptProvider options={{ clientId: 'sb' }} deferLoading={true}>
+        <HelmetProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={router} />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </QueryClientProvider>
+        </HelmetProvider>
+      </PayPalScriptProvider>
     </ColorTheme>
   </React.StrictMode>
 )

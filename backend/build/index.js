@@ -5,9 +5,9 @@ var __importDefault =
     return mod && mod.__esModule ? mod : { default: mod }
   }
 Object.defineProperty(exports, '__esModule', { value: true })
-const express_1 = __importDefault(require('express'))
-const data_1 = require('./data')
-const cors_1 = __importDefault(require('cors'))
+const express_1 = __importDefault(import('express'))
+const data_1 = import('./data')
+const cors_1 = __importDefault(import('cors'))
 const app = (0, express_1.default)()
 app.use(
   (0, cors_1.default)({

@@ -45,6 +45,20 @@ export const sampleProduct: Product[] = [
     rating: 5,
     numberOfReviews: 2,
   },
+  {
+    _id: '4',
+    name: 'Washing Machine',
+    url: 'Washing-Machine',
+    image: '../productImages/appliances/washing_machine.png',
+    category: 'Appliances',
+    brand: 'Hanabishi',
+    price: 40000,
+    stockCount: 45,
+    description:
+      ' An essential laundry appliance that keeps food and beverages cool and fresh by maintaining a low temperature.',
+    rating: 9,
+    numberOfReviews: 24,
+  },
 ]
 
 export const sampleUsers: User[] = [

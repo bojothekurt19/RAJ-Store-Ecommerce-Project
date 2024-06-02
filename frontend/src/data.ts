@@ -2,6 +2,7 @@ import { Product } from './types/Product'
 
 export const sampleProduct: Product[] = [
   {
+    _id: '1',
     url: 'Dishwasher',
     name: 'Dishwasher',
     image: '../productImages/appliances/dishwasher.jpg',
@@ -15,6 +16,7 @@ export const sampleProduct: Product[] = [
     numberOfReviews: 4,
   },
   {
+    _id: '2',
     url: 'Oven',
     name: 'Oven',
     image: '../productImages/appliances/oven.jpeg',
@@ -28,6 +30,7 @@ export const sampleProduct: Product[] = [
     numberOfReviews: 5,
   },
   {
+    _id: '3',
     url: 'Refrigerator',
     name: 'Refrigerator',
     image: '../productImages/appliances/ref.jpeg',

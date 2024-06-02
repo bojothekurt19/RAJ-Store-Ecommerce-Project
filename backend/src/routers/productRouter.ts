@@ -22,3 +22,11 @@ productRouter.get(
     }
   })
 )
+// productRouter.post(
+//   '/',
+//   asyncHandler(async (req, res) => {
+//     const newProduct = new ProductModel(req.body)
+//     await newProduct.save()
+//     res.status(201).json(newProduct)
+//   })
+// )

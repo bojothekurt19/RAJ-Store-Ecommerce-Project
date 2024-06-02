@@ -36,3 +36,4 @@ export class Product {
 }
 
 export const ProductModel = getModelForClass(Product)
+// const Product = mongoose.model('Product', productSchema);

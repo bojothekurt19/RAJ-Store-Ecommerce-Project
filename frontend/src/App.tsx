@@ -53,7 +53,7 @@ function App() {
             setTimeout(() => {
               window.location.href = '/signin'
             }, 5000)
-          }, 5 * 60 * 1000)
+          }, 5 * 60 * 1000) //5 * 60 * 1000
         }
       }
     }
