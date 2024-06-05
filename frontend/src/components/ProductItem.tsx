@@ -9,6 +9,7 @@ import { cartItem } from '../types/cartItem'
 import { productToCart } from '../utilities'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import '../index.css'
 
 function ProductItem({ product }: { product: Product }) {
   const { state, dispatch } = useContext(Store)
@@ -35,7 +36,7 @@ function ProductItem({ product }: { product: Product }) {
   }
 
   return (
-    <Card style={{ height: '100%' }}>
+    <Card style={{ height: '100%' }} className="Product-Card">
       <Link to={`/product/${product.url}`}>
         <img
           src={product.image}

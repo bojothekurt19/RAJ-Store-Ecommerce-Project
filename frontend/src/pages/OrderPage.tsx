@@ -47,6 +47,7 @@ export default function OrderPage() {
   const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
     style: { layout: 'vertical' },
     createOrder(data, actions) {
+      console.log(data)
       return actions.order
         .create({
           intent: 'CAPTURE',
@@ -64,6 +65,7 @@ export default function OrderPage() {
         })
     },
     onApprove(data, actions) {
+      console.log(data)
       return actions.order!.capture().then(async (details) => {
         try {
           payOrder({ orderId: orderId!, ...details })
@@ -83,12 +85,12 @@ export default function OrderPage() {
   const { data: paypalConfig } = useGetPaypalClientIdQuery()
 
   useEffect(() => {
-    if (paypalConfig && paypalConfig.clientID) {
+    if (paypalConfig && paypalConfig.clientId) {
       const loadPaypalScript = async () => {
         paypalDispatch({
           type: 'resetOptions',
           value: {
-            clientId: paypalConfig!.clientID,
+            clientId: paypalConfig!.clientId,
             currency: 'PHP',
           },
         })
@@ -126,6 +128,17 @@ export default function OrderPage() {
                 <strong>Address:</strong> {order.shippingAddress.address},{' '}
                 {order.shippingAddress.city}, {order.shippingAddress.postalCode}
                 , {order.shippingAddress.country}
+                {/* &nbsp;{' '}
+                {order.shippingAddress.location &&
+                  order.shippingAddress.location.lat && (
+                    <a
+                      target="_new"
+                      href={`https://maps.google.com?q=${order.shippingAddress.location.lat},
+                      ${order.shippingAddress.location.lng}`}
+                    >
+                      Show On Map
+                    </a>
+                  )} */}
               </Card.Text>
               {order.isDelivered ? (
                 <MessageBox variant="success">
@@ -218,9 +231,7 @@ export default function OrderPage() {
                       </MessageBox>
                     ) : (
                       <div>
-                        <PayPalButtons
-                          {...paypalbuttonTransactionProps}
-                        ></PayPalButtons>
+                        <PayPalButtons {...paypalbuttonTransactionProps} />
                         <Button onClick={testPayHandler}>Test Pay</Button>
                       </div>
                     )}
