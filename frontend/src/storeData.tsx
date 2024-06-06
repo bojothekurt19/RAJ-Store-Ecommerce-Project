@@ -26,8 +26,19 @@ const initialState: AppState = {
     shippingAddress: localStorage.getItem('shippingAddress')
       ? JSON.parse(localStorage.getItem('shippingAddress')!)
       : {},
+    // paymentMethod: localStorage.getItem('paymentMethod')
+    //   ? JSON.parse(localStorage.getItem('paymentMethod')!)
+    //   : 'Paypal',
     paymentMethod: localStorage.getItem('paymentMethod')
-      ? JSON.parse(localStorage.getItem('paymentMethod')!)
+      ? (function () {
+          try {
+            return JSON.parse(localStorage.getItem('paymentMethod')!)
+          } catch (error) {
+            console.error('Error parsing payment method:', error)
+            // Handle the parsing error (e.g., set paymentMethod to default value)
+            return 'Paypal' // Or any other default value
+          }
+        })()
       : 'Paypal',
     itemPrice: 0,
     shippingPrice: 0,

@@ -42,3 +42,26 @@ export const useCreatedOrderMutaion = () =>
         )
       ).data,
   })
+
+export const useGetOrderHistoryQuery = () =>
+  useQuery({
+    queryKey: ['order-history'],
+    queryFn: async () =>
+      (await apiClient.get<Order[]>(`/api/orders/mine`)).data,
+  })
+
+// export const useGetOrderHistoryQuery = () => {
+//   const query = useQuery({
+//     queryKey: ['order-history'],
+//     queryFn: async () => {
+//       console.log('Fetching order history...')
+//       const response = await apiClient.get<Order[]>(`/api/orders/mine`)
+//       console.log('Order history response:', response.data)
+//       return response.data
+//     },
+//   })
+
+//   console.log('Order history query:', query)
+
+//   return query
+// }

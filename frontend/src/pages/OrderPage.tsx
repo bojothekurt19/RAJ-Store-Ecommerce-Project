@@ -20,6 +20,7 @@ import {
   PayPalButtonsComponentProps,
   PayPalButtons,
 } from '@paypal/react-paypal-js'
+import '../index.css'
 
 export default function OrderPage() {
   const { state } = useContext(Store)
@@ -40,12 +41,15 @@ export default function OrderPage() {
   } = useGetOrderDetailsQuery(orderId!)
 
   const testPayHandler = async () => {
-    payOrder({ orderId: orderId! })
+    await payOrder({ orderId: orderId! })
     refetch()
     toast.success('Order is paid')
   }
+
   const paypalbuttonTransactionProps: PayPalButtonsComponentProps = {
-    style: { layout: 'vertical' },
+    style: {
+      layout: 'vertical',
+    },
     createOrder(data, actions) {
       console.log(data)
       return actions.order

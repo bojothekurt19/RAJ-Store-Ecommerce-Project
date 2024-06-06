@@ -113,6 +113,12 @@ function App() {
             </Link>
             {userInfo ? (
               <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+                <Link className="dropdown-item" to="/profile">
+                  User Profile
+                </Link>
+                <Link className="dropdown-item" to="/purchase-history">
+                  Order History
+                </Link>
                 <Link
                   className="dropdown-item"
                   to="#signout"

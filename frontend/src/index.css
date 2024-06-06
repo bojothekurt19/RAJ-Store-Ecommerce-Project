@@ -102,3 +102,7 @@ img.large {
 .Product-Col {
   margin-bottom: 2rem;
 }
+/* .dropdown-menu [data-bs-popper] {
+  left: auto;
+  right: 200px;
+} */
