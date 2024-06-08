@@ -53,7 +53,7 @@ export default function ShippingAddressPage() {
     navigate('/payment')
   }
   return (
-    <div>
+    <div className="shipping-address-container">
       <Helmet>
         <title>Shipping Address</title>
       </Helmet>

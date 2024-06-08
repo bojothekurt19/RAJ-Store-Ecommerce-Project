@@ -48,7 +48,7 @@ function ProductPage() {
   ) : !product ? (
     <MessageBox variant="danger">Product Not Found</MessageBox>
   ) : (
-    <div>
+    <div className="product-page">
       <Row>
         <Col md={6}>
           <img className="large" src={product.image} alt={product.name}></img>

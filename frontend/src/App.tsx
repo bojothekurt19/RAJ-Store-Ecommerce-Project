@@ -4,6 +4,9 @@ import {
   Badge,
   Button,
   Container,
+  Form,
+  FormControl,
+  InputGroup,
   Nav,
   NavDropdown,
   Navbar,
@@ -78,7 +81,7 @@ function App() {
           variant="dark"
           expand="lg"
           style={{
-            backgroundColor: mode === 'light' ? '#bbe4e9' : '#596e79',
+            backgroundColor: mode === 'light' ? '#DFE9CE' : '#596e79',
           }}
         >
           <Container>
@@ -91,6 +94,25 @@ function App() {
                 />
               </a>
             </Navbar.Brand>
+            <Form className="flex-grow-1 d-flex me-auto">
+              <InputGroup>
+                <FormControl
+                  type="text"
+                  name="q"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="button-search"
+                  className="Search-Input"
+                ></FormControl>
+                <Button
+                  variant="outline-primary"
+                  type="submit"
+                  id="button-search"
+                >
+                  <i className="fas fa-search"></i>
+                </Button>
+              </InputGroup>
+            </Form>
           </Container>
           <Nav>
             <Button variant={mode} onClick={switchButton}>
@@ -112,7 +134,16 @@ function App() {
               </Badge>
             </Link>
             {userInfo ? (
-              <NavDropdown title={userInfo.name} id="basic-nav-dropdown">
+              <NavDropdown
+                title={
+                  <span
+                    className={`text-${mode === 'light' ? 'black' : 'white'}`}
+                  >
+                    {userInfo.name}
+                  </span>
+                }
+                id="basic-nav-dropdown"
+              >
                 <Link className="dropdown-item" to="/profile">
                   User Profile
                 </Link>
@@ -149,7 +180,7 @@ function App() {
           <Outlet />
         </Container>
       </main>
-      <footer>
+      <footer className="footer">
         <div className="text-center">All rights reserved.</div>
       </footer>
     </div>

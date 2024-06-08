@@ -53,56 +53,58 @@ export default function SignupPage() {
     }
   }
   return (
-    <Container className="small-container">
-      <Helmet>
-        <title>Sign Up</title>
-      </Helmet>
-      <h1 className="my-3"> Sign Up</h1>
-      <Form onSubmit={submitRegisterHandler}>
-        <Form.Group className="mb-3" controlId="name">
-          <Form.Label>Name</Form.Label>
-          <Form.Control
-            onChange={(e) => setName(e.target.value)}
-            required
-            className="signup-border"
-          />
-        </Form.Group>
+    <div className="signup-page-container">
+      <Container className="small-container">
+        <Helmet>
+          <title>Sign Up</title>
+        </Helmet>
+        <h1 className="my-3"> Sign Up</h1>
+        <Form onSubmit={submitRegisterHandler}>
+          <Form.Group className="mb-3" controlId="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="signup-border"
+            />
+          </Form.Group>
 
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-            className="signup-border"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-            className="signup-border"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="confirm-password">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            required
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            className="signup-border"
-          />
-        </Form.Group>
-        <div className="mb-3">
-          <Button type="submit">Register</Button>
-        </div>
-        <div className="mb-3">
-          Already have an Account?{' '}
-          <Link to={`/signin?redirect=${redirect}`}> Sign-In</Link>
-        </div>
-      </Form>
-    </Container>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+              className="signup-border"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+              className="signup-border"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="confirm-password">
+            <Form.Label>Confirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              required
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="signup-border"
+            />
+          </Form.Group>
+          <div className="mb-3">
+            <Button type="submit">Register</Button>
+          </div>
+          <div className="mb-3">
+            Already have an Account?{' '}
+            <Link to={`/signin?redirect=${redirect}`}> Sign-In</Link>
+          </div>
+        </Form>
+      </Container>
+    </div>
   )
 }

@@ -14,7 +14,7 @@ export default function SigninPage() {
   const navigate = useNavigate()
   const { search } = useLocation()
   const redirectInUrl = new URLSearchParams(search).get('redirect')
-  const redirect = redirectInUrl ? redirectInUrl : '/'
+  const redirect = redirectInUrl ? redirectInUrl : '/home'
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -45,43 +45,45 @@ export default function SigninPage() {
   }, [navigate, redirect, userInfo])
 
   return (
-    <Container className="small-container">
-      <Helmet>
-        <title>Sign In</title>
-      </Helmet>
-      <h1 className="my-3">Sign In</h1>
-      <Form onSubmit={submitLoginHandler}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            className="custom-border"
-            type="email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            className="custom-border"
-            type="password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <div className="mb-3">
-          <Button disabled={isPending} type="submit">
-            Login
-          </Button>
-          {isPending && <LoadingBox />}
-        </div>
+    <div className="signin-page-container">
+      <Container className="small-container">
+        <Helmet>
+          <title>Sign In</title>
+        </Helmet>
+        <h1 className="my-3">Sign In</h1>
+        <Form onSubmit={submitLoginHandler}>
+          <Form.Group className="mb-3" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              className="custom-border"
+              type="email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              className="custom-border"
+              type="password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <div className="mb-3">
+            <Button disabled={isPending} type="submit">
+              Login
+            </Button>
+            {isPending && <LoadingBox />}
+          </div>
 
-        <div className="mb-3">
-          <Link to={`/signup?redirect=${redirect}`}>
-            Don't have an account yet?
-          </Link>
-        </div>
-      </Form>
-    </Container>
+          <div className="mb-3">
+            <Link to={`/signup?redirect=${redirect}`}>
+              Don't have an account yet?
+            </Link>
+          </div>
+        </Form>
+      </Container>
+    </div>
   )
 }

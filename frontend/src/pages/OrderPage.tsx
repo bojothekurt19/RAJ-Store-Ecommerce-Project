@@ -117,7 +117,7 @@ export default function OrderPage() {
   ) : !order ? (
     <MessageBox variant="danger"> Order Not Found. </MessageBox>
   ) : (
-    <div>
+    <div className="order-page-container">
       <Helmet>
         <title>Order {orderId}</title>
       </Helmet>
@@ -186,7 +186,7 @@ export default function OrderPage() {
                       <Col md={3}>
                         <span>{item.quantity}</span>
                       </Col>
-                      <Col md={3}>${CurrencyFormat(item.price)}</Col>
+                      <Col md={3}>{CurrencyFormat(item.price)}</Col>
                     </Row>
                   </ListGroup.Item>
                 ))}

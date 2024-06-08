@@ -56,7 +56,7 @@ export default function CartPage() {
   const summary = calculateSubtotal()
 
   return (
-    <div>
+    <div className="cart-page">
       <Helmet>
         <title>Shopping Cart</title>
       </Helmet>

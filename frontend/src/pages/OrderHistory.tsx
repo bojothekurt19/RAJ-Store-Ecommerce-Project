@@ -12,7 +12,7 @@ export default function OrderHistory() {
   const navigate = useNavigate()
   const { data: orders, isLoading, error } = useGetOrderHistoryQuery()
   return (
-    <div>
+    <div className="order-history-container">
       <Helmet>
         <title>Order History</title>
       </Helmet>

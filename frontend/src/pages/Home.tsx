@@ -18,15 +18,17 @@ export default function Home() {
       {getError(error as unknown as ApiError)}
     </MessageBox>
   ) : (
-    <Row className="flex-wrap">
-      <Helmet>
-        <title>RAJ STORE</title>
-      </Helmet>
-      {products!.map((product) => (
-        <Col key={product.url} sm={6} m={4} lg={3} className="Product-Col">
-          <ProductItem product={product} />
-        </Col>
-      ))}
-    </Row>
+    <div className="product-map-container">
+      <Row className="flex-wrap">
+        <Helmet>
+          <title>RAJ STORE</title>
+        </Helmet>
+        {products!.map((product) => (
+          <Col key={product.url} sm={6} m={4} lg={3} className="Product-Col">
+            <ProductItem product={product} />
+          </Col>
+        ))}
+      </Row>
+    </div>
   )
 }
