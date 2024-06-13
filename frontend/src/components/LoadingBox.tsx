@@ -1,9 +1,19 @@
-import { Spinner } from 'react-bootstrap'
+import '../index.css'
 
 export default function LoadingBox() {
   return (
-    <Spinner animation="border" role="status">
-      <span className="visually hidden"></span>
-    </Spinner>
+    <>
+      <div className="loading-design">
+        <img src="raj.png" className="logo-loading" />
+
+        <div className="spinner-all">
+          <div
+            className="spinner-grow"
+            role="status"
+            style={{ animationDuration: '3s' }}
+          ></div>
+        </div>
+      </div>
+    </>
   )
 }

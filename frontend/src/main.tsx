@@ -33,27 +33,27 @@ import CoverPage from './pages/CoverPage.tsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
-      <Route index={true} element={<CoverPage />} />
-      {/* <Route index={true} element={<Home />} /> */}
-      <Route path="home" element={<Home />} />
-      <Route path="product/:url" element={<ProductPage />} />
-      <Route path="cart" element={<CartPage />} />
-      <Route path="signin" element={<SigninPage />} />
-      <Route path="signup" element={<SignupPage />} />
+    <>
+      <Route path="/" element={<App />}>
+        <Route index={true} element={<CoverPage />} />
+        <Route path="home" element={<Home />} />
+        <Route path="product/:url" element={<ProductPage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="signin" element={<SigninPage />} />
+        <Route path="signup" element={<SignupPage />} />
 
-      <Route path="" element={<ProtectedRoute />}>
-        <Route path="shipping" element={<ShippingAddressPage />} />
-        <Route path="payment" element={<PaymentMethodPage />} />
-        <Route path="placeorder" element={<PlaceOrder />} />
-        <Route path="/order/:id" element={<OrderPage />} />
-        <Route path="purchase-history" element={<OrderHistory />} />
-        {/* <Route path="/orderhistory" element={<OrderHistory />} /> */}
+        <Route path="" element={<ProtectedRoute />}>
+          <Route path="shipping" element={<ShippingAddressPage />} />
+          <Route path="payment" element={<PaymentMethodPage />} />
+          <Route path="placeorder" element={<PlaceOrder />} />
+          <Route path="/order/:id" element={<OrderPage />} />
+          <Route path="purchase-history" element={<OrderHistory />} />
+          {/* <Route path="/orderhistory" element={<OrderHistory />} /> */}
+        </Route>
+        {/* <Route path="dashboard" element={<Dashboard />} /> */}
+        {/* ... etc. */}
       </Route>
-
-      {/* <Route path="dashboard" element={<Dashboard />} /> */}
-      {/* ... etc. */}
-    </Route>
+    </>
   )
 )
 const queryClient = new QueryClient()

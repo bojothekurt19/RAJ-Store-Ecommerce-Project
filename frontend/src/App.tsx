@@ -15,6 +15,7 @@ import { Link, Outlet } from 'react-router-dom'
 import { Store } from './storeData'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Footer from './components/Footer'
 
 function App() {
   const {
@@ -181,7 +182,7 @@ function App() {
         </Container>
       </main>
       <footer className="footer">
-        <div className="text-center">All rights reserved.</div>
+        <Footer />
       </footer>
     </div>
   )
